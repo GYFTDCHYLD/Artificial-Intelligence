@@ -1,13 +1,15 @@
 package Prolog;
 
-import org.jpl7.*;
-
+import java.awt.EventQueue;
 
 public class AI_Driver {
-
+	
 	public static void main(String[] args) {
-		System.out.println("Prolog");
-
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new UI("Covid-19 Management System");
+			}
+		});
 	}
 
 }
