@@ -27,19 +27,51 @@ public class UI extends JFrame implements ActionListener{
 	 * 
 	 */ 
 	private JLabel displayMessage = new JLabel();// where you type your message
+	
 	private JTextField FirstName = new JTextField();// where you type your key
-	private JTextField LastName = new JTextField();// where you type your key 
 	private JLabel FirstNameLabel = new JLabel("FIRSTNAME"); 
-	private JLabel LastNameLabel = new JLabel("LASTNAME");  
+	
+	private JTextField LastName = new JTextField();// where you type your key 
+	private JLabel LastNameLabel = new JLabel("LASTNAME"); 
+	
+	private String[] EthnicityChoices; 
+	private JComboBox<String> EthnicityDropdown; 
 	private JLabel EthnicityLabel = new JLabel("ETHNICITY"); 
+	
+	private JTextField AgeTextField = new JTextField();// where you type your key 
+	private JLabel AgeNameLabel = new JLabel("AGE"); 
+	
+	private String[] GenderChoices;
+	private JComboBox<String> GenderDropdown;
+	private JLabel GenderLabel = new JLabel("GENDER"); 
+	
+	private String[] ParishChoices;
+	private JComboBox<String> ParishDropdown;
+	private JLabel ParishLabel = new JLabel("PARISH"); 
+	
+	private JTextField TextField3 = new JTextField();// where you type your key 
+	
+	private JTextField TemperatureTextField = new JTextField();// where you type your key 
+	private JLabel TemperatureLabel = new JLabel("TEMPERATURE IN CELCIOUS");
+	
+	private String[] SymtomChoices;
+	private JComboBox<String> SymtomsDropdown;
+	private JLabel SymtomsLabel = new JLabel("SYMTOMS");
+	
+	private JTextField TextField4 = new JTextField();// where you type your key 
+	private JTextField TextField5 = new JTextField();// where you type your key 
+	
+	
+	
 	private JButton Button1 = new JButton("Button1");
 	private JButton Button2 = new JButton("Button2");
 	private JButton Button3 = new JButton("Button3");
 	private JButton Button4 = new JButton("Button4"); 
-	private String[] choices;
-	private JComboBox<String> EthnicityDropdown;  
-	private JLabel Background = new JLabel();
 	
+
+
+	
+	private JLabel Background = new JLabel();
 
 	
 	public UI(String name){
@@ -73,7 +105,6 @@ public class UI extends JFrame implements ActionListener{
 		FirstNameLabel.setFont(new Font("arial", Font.BOLD, 18));
 		
 		
-		
 		LastName.setSize(200, 25); // width, height
 		LastName.setLocation(5, 50); // x, y
 		LastName.setBorder(new LineBorder(java.awt.Color.RED, 1));
@@ -85,9 +116,10 @@ public class UI extends JFrame implements ActionListener{
 		LastNameLabel.setForeground(Color.WHITE);
 		LastNameLabel.setFont(new Font("arial", Font.BOLD, 18));
 		
+		
 
-		choices = new String[]{"","White", "Black", "Hispanic"};
-		EthnicityDropdown = new JComboBox<String>(choices);
+		EthnicityChoices = new String[]{"","White", "Black", "Hispanic", "Aisian", "Caucasian"};
+		EthnicityDropdown = new JComboBox<String>(EthnicityChoices);
 		EthnicityDropdown.addActionListener(this);
 		EthnicityDropdown.setFont(new Font("arial", Font.BOLD, 15));
 		EthnicityDropdown.setVisible(true);
@@ -99,6 +131,97 @@ public class UI extends JFrame implements ActionListener{
 		EthnicityLabel.setForeground(Color.WHITE);
 		EthnicityLabel.setFont(new Font("arial", Font.BOLD, 18));
 		EthnicityDropdown.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		
+		
+		AgeTextField.setSize(50, 25); // width, height
+		AgeTextField.setLocation(5, 125); // x, y
+		AgeTextField.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		AgeTextField.setFont(new Font("arial", Font.BOLD, 15));
+		add(AgeTextField);
+		AgeNameLabel.setBounds(60, 128, 300, 20);
+		add(AgeNameLabel);
+		AgeNameLabel.setForeground(Color.WHITE);
+		AgeNameLabel.setFont(new Font("arial", Font.BOLD, 18));
+		
+		
+		
+		GenderChoices = new String[]{"","Male", "Female"};
+		GenderDropdown = new JComboBox<String>(GenderChoices); 
+		GenderDropdown.addActionListener(this);
+		GenderDropdown.setFont(new Font("arial", Font.BOLD, 15));
+		GenderDropdown.setVisible(true);
+		GenderDropdown.setBounds(125, 125, 80, 25);
+		add(GenderDropdown);
+		GenderDropdown.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		GenderLabel.setBounds(210, 128, 300, 20);
+		add(GenderLabel);
+		GenderLabel.setForeground(Color.WHITE);
+		GenderLabel.setFont(new Font("arial", Font.BOLD, 18));
+		
+		
+		ParishChoices = new String[]{"","Kingston & St Andrew", "St Cathrine", "St Mary", "St Ann"};
+		ParishDropdown = new JComboBox<String>(ParishChoices); 
+		ParishDropdown.addActionListener(this);
+		ParishDropdown.setFont(new Font("arial", Font.BOLD, 15));
+		ParishDropdown.setVisible(true);
+		ParishDropdown.setBounds(5, 160, 200, 25);
+		add(ParishDropdown);
+		ParishDropdown.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		ParishLabel.setBounds(210, 162, 300, 20);
+		add(ParishLabel);
+		ParishLabel.setForeground(Color.WHITE);
+		ParishLabel.setFont(new Font("arial", Font.BOLD, 18));
+		
+		
+		TextField3.setSize(50, 25); // width, height
+		TextField3.setLocation(5, 195); // x, y
+		TextField3.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		TextField3.setFont(new Font("arial", Font.BOLD, 15));
+		add(TextField3);
+		
+
+		TemperatureTextField.setSize(50, 25); // width, height
+		TemperatureTextField.setLocation(155, 195); // x, y
+		TemperatureTextField.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		TemperatureTextField.setFont(new Font("arial", Font.BOLD, 15));
+		add(TemperatureTextField);
+		TemperatureLabel.setBounds(210, 195, 300, 20);
+		add(TemperatureLabel);
+		TemperatureLabel.setForeground(Color.WHITE);
+		TemperatureLabel.setFont(new Font("arial", Font.BOLD, 18));
+		
+		
+		SymtomChoices = new String[]{"","Dizziness", "Fainting", "Fever", "Blurred Vision"};
+		SymtomsDropdown = new JComboBox<String>(SymtomChoices); 
+		SymtomsDropdown.addActionListener(this);
+		SymtomsDropdown.setFont(new Font("arial", Font.BOLD, 15));
+		SymtomsDropdown.setVisible(true);
+		SymtomsDropdown.setBounds(5, 230, 200, 25);
+		add(SymtomsDropdown);
+		SymtomsDropdown.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		SymtomsLabel.setBounds(210, 230, 300, 20);
+		add(SymtomsLabel);
+		SymtomsLabel.setForeground(Color.WHITE);
+		SymtomsLabel.setFont(new Font("arial", Font.BOLD, 18));
+		
+		
+		TextField4.setSize(200, 25); // width, height
+		TextField4.setLocation(5, 265); // x, y
+		TextField4.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		TextField4.setFont(new Font("arial", Font.BOLD, 15));
+		add(TextField4);
+		
+		TextField5.setSize(200, 25); // width, height
+		TextField5.setLocation(5, 300); // x, y
+		TextField5.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		TextField5.setFont(new Font("arial", Font.BOLD, 15));
+		add(TextField5);
+		
+
+
+		
+
+		
 		
 		Button1.addActionListener(this);
 		Button1.setBounds(20, 520, 100, 29);
