@@ -64,6 +64,7 @@ public class UI extends JFrame implements ActionListener{
 		FirstName.setSize(200, 25); // width, height
 		FirstName.setLocation(5, 10); // x, y
 		FirstName.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		FirstName.setFont(new Font("arial", Font.BOLD, 15));
 		add(FirstName);
 		FirstNameLabel.setHorizontalAlignment(SwingConstants.CENTER); 
 		FirstNameLabel.setBounds(110, 13, 300, 20);
@@ -76,6 +77,7 @@ public class UI extends JFrame implements ActionListener{
 		LastName.setSize(200, 25); // width, height
 		LastName.setLocation(5, 50); // x, y
 		LastName.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		LastName.setFont(new Font("arial", Font.BOLD, 15));
 		add(LastName);
 		LastNameLabel.setHorizontalAlignment(SwingConstants.CENTER); 
 		LastNameLabel.setBounds(110, 53, 300, 20);
@@ -87,14 +89,16 @@ public class UI extends JFrame implements ActionListener{
 		choices = new String[]{"","White", "Black", "Hispanic"};
 		EthnicityDropdown = new JComboBox<String>(choices);
 		EthnicityDropdown.addActionListener(this);
+		EthnicityDropdown.setFont(new Font("arial", Font.BOLD, 15));
 		EthnicityDropdown.setVisible(true);
-		EthnicityDropdown.setBounds(0, 88, 210, 25);
+		EthnicityDropdown.setBounds(5, 88, 200, 25);
 		add(EthnicityDropdown);
 		EthnicityLabel.setHorizontalAlignment(SwingConstants.CENTER); 
-		EthnicityLabel.setBounds(108, 88, 300, 20);
+		EthnicityLabel.setBounds(108, 90, 300, 20);
 		add(EthnicityLabel);
 		EthnicityLabel.setForeground(Color.WHITE);
 		EthnicityLabel.setFont(new Font("arial", Font.BOLD, 18));
+		EthnicityDropdown.setBorder(new LineBorder(java.awt.Color.RED, 1));
 		
 		Button1.addActionListener(this);
 		Button1.setBounds(20, 520, 100, 29);
