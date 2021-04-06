@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-public class UI extends JFrame implements ActionListener{
+public class Diagnose extends JFrame implements ActionListener{
 	/**
 	 * 
 	 */ 
@@ -63,10 +63,9 @@ public class UI extends JFrame implements ActionListener{
 	
 	
 	
-	private JButton Button1 = new JButton("Button1");
-	private JButton Button2 = new JButton("Button2");
-	private JButton Button3 = new JButton("Button3");
-	private JButton Button4 = new JButton("Button4"); 
+	private JButton Reset = new JButton("Reset");
+	private JButton Main = new JButton("Main");
+	private JButton Submit = new JButton("Submit"); 
 	
 
 
@@ -74,7 +73,7 @@ public class UI extends JFrame implements ActionListener{
 	private JLabel Background = new JLabel();
 
 	
-	public UI(String name){
+	public Diagnose(String name){
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
@@ -82,6 +81,7 @@ public class UI extends JFrame implements ActionListener{
 		setLayout(null);
 		setSize(800, 600); // width, height
 		setTitle(name.toUpperCase());
+		setLocationRelativeTo(null);
 		
 
 		
@@ -222,25 +222,21 @@ public class UI extends JFrame implements ActionListener{
 		
 
 		
+
 		
-		Button1.addActionListener(this);
-		Button1.setBounds(20, 520, 100, 29);
-		getContentPane().add(Button1);
-		
-		
-		Button2.addActionListener(this);
-		Button2.setBounds(150, 520, 100, 29);
-		getContentPane().add(Button2);
+		Reset.addActionListener(this);
+		Reset.setBounds(390, 520, 100, 29);
+		getContentPane().add(Reset);
 		
 		
-		Button3.addActionListener(this); 
-		Button3.setBounds(280, 520, 100, 29);
-		getContentPane().add(Button3);
+		Main.addActionListener(this);  
+		Main.setBounds(520, 520, 100, 29);
+		getContentPane().add(Main);
 		
 		
-		Button4.addActionListener(this);
-		Button4.setBounds(410, 520, 100, 29);
-		getContentPane().add(Button4);
+		Submit.addActionListener(this);
+		Submit.setBounds(650, 520, 100, 29);
+		getContentPane().add(Submit); 
 		
 		Background.setHorizontalAlignment(SwingConstants.CENTER); 
 		Background.setIcon(new ImageIcon("Images/blue-covid-banner.jpg"));
@@ -253,10 +249,16 @@ public class UI extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());
-		if(e.getActionCommand().equals("Encrypt")){
-			if(EthnicityDropdown.getSelectedItem().equals("option1")) {
-				
-			}
+		switch (e.getActionCommand()) {
+			case "Reset": 
+				break;
+			case "Main": 	this.dispose();
+							new Main("Covid-19 Management System");
+				break;
+			case "Submit": 
+				break; 
+			default:
+				break;
 		}
 		
 	}
