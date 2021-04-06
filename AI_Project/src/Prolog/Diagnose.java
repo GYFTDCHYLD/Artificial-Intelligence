@@ -250,7 +250,8 @@ public class Diagnose extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());
 		switch (e.getActionCommand()) {
-			case "Reset": 
+			case "Reset": 	this.dispose();
+							new Diagnose("Covid-19 Management System");
 				break;
 			case "Main": 	this.dispose();
 							new Main("Covid-19 Management System");
