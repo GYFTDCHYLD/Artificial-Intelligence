@@ -261,7 +261,7 @@ public class Diagnose extends JFrame implements ActionListener{
 			
 			string = "sign(X," + symtom.toLowerCase().replaceAll(" ", "") + ")";
 			Query q = new Query(string);
-			JOptionPane.showMessageDialog(null, " you have symtoms associated with " + q.oneSolution().get("X"), FirstName.getText() + " " + LastName.getText() , JOptionPane.INFORMATION_MESSAGE );
+			JOptionPane.showMessageDialog(null, symtom + " is a symtoms associated with " + q.oneSolution().get("X"), FirstName.getText() + " " + LastName.getText() , JOptionPane.INFORMATION_MESSAGE );
 	
 		}catch(NullPointerException e) {
 			
