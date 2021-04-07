@@ -259,7 +259,7 @@ public class Diagnose extends JFrame implements ActionListener{
 			string = "is_a_symtom("+ symtom.toLowerCase().replaceAll(" ", "") +")";
 			Query query = new Query(string);
 			
-			string = "sign(X,fever)";
+			string = "sign(X," + symtom.toLowerCase().replaceAll(" ", "") + ")";
 			Query q = new Query(string);
 			JOptionPane.showMessageDialog(null, " you have symtoms associated with " + q.oneSolution().get("X"), FirstName.getText() + " " + LastName.getText() , JOptionPane.INFORMATION_MESSAGE );
 	
@@ -270,7 +270,7 @@ public class Diagnose extends JFrame implements ActionListener{
 
 	
 	public void actionPerformed(ActionEvent e) {
-		//System.out.println(e.getActionCommand());
+		System.out.println(e.getActionCommand());
 		switch (e.getActionCommand()) {
 			case "Reset": 	this.dispose();
 							new Diagnose("Covid-19 Management System");
