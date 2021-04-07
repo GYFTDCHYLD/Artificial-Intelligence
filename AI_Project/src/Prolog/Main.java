@@ -74,7 +74,8 @@ public class Main extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		switch (e.getActionCommand()) {
-			case "Add Data": 
+			case "Add Data": 	this.dispose();
+								new Add("Covid-19 Management System");
 				break;
 			case "Diagnose": 	this.dispose();
 								new Diagnose("Covid-19 Management System");

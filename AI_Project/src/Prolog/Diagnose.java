@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -242,13 +243,34 @@ public class Diagnose extends JFrame implements ActionListener{
 		Background.setIcon(new ImageIcon("Images/blue-covid-banner.jpg"));
 		Background.setBounds(0, 0,1000, 700);
 		add(Background);
+		
+		
+		Query q1 = new Query(
+				"consult", new Term[] {new Atom("src/KnowledgeBase.pl")} 
+		);
+		System.out.println( "consult" + (q1.hasSolution() ? " succeeded" : " failed"));	
 	}
 
 	
+	private void Query(String symtom){
+		String string;
+		
+		try {
+			string = "is_a_symtom("+ symtom.toLowerCase().replaceAll(" ", "") +")";
+			Query query = new Query(string);
+			
+			string = "sign(X,fever)";
+			Query q = new Query(string);
+			JOptionPane.showMessageDialog(null, " you have symtoms associated with " + q.oneSolution().get("X"), FirstName.getText() + " " + LastName.getText() , JOptionPane.INFORMATION_MESSAGE );
+	
+		}catch(NullPointerException e) {
+			
+		}
+	}
 
 	
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(e.getActionCommand());
+		//System.out.println(e.getActionCommand());
 		switch (e.getActionCommand()) {
 			case "Reset": 	this.dispose();
 							new Diagnose("Covid-19 Management System");
@@ -256,7 +278,7 @@ public class Diagnose extends JFrame implements ActionListener{
 			case "Main": 	this.dispose();
 							new Main("Covid-19 Management System");
 				break;
-			case "Submit": 
+			case "Submit": Query(SymtomsDropdown.getSelectedItem().toString());
 				break; 
 			default:
 				break;

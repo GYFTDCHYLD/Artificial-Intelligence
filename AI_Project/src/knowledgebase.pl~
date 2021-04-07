@@ -1,0 +1,20 @@
+disease(covid19).
+
+symtom(fainting).
+symtom(dizziness).
+
+
+sign(covid19,fever).
+sign(covid19,dizziness).
+sign(covid19,fainting).
+sign(covid19,blurredvision).
+
+
+
+
+
+
+is_a_symtom(X):- sign(covid19,X);symtom(X).
+
+
+
