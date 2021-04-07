@@ -1,0 +1,10 @@
+symtom(fainting).
+
+disease(covid19).
+
+sign(covid19, fainting).
+
+is_a_symtom(X):- symtom(X); sign(covid-19, X); disease(covid-19).
+
+
+

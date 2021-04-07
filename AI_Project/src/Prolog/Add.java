@@ -87,7 +87,7 @@ public class Add extends JFrame implements ActionListener{
 	
 	private void Write() {
 		try {
-			FileWriter writer = new FileWriter("src/KnowledgeBase.pl");
+			FileWriter writer = new FileWriter("src/KnowledgeBase.pl",true);
 			writer.write("symtom(" + Symtom.getText().toLowerCase() + ").\n");
 			writer.close();
 			Symtom.setText("");
