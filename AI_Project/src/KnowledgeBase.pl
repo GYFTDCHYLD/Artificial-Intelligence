@@ -1,4 +1,4 @@
-is_a_symtom(X):- symtom(X); signs(covid19, X); disease(covid-19).
+is_a_symtom(X):- symtom(X); signs(Y, X); disease(Y).
 
 disease(covid19).
 
