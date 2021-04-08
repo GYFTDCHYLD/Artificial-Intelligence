@@ -88,7 +88,10 @@ public class Add extends JFrame implements ActionListener{
 	private void Write() {
 		try {
 			FileWriter writer = new FileWriter("src/KnowledgeBase.pl",true);
-			writer.write("symtom(" + Symtom.getText().toLowerCase() + ").\n");
+			writer.write("symtom(" + Symtom.getText().toLowerCase() + ").  signs(covid19," + Symtom.getText().toLowerCase() + ").\n");
+			writer.close();
+			writer = new FileWriter("src/symtoms.txt",true);
+			writer.write(Symtom.getText().toLowerCase().replaceAll(" ", "_") + "\n");
 			writer.close();
 			Symtom.setText("");
 		} catch (IOException e) {

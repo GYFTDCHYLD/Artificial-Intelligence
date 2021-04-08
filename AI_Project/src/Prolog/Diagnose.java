@@ -192,7 +192,7 @@ public class Diagnose extends JFrame implements ActionListener{
 		TemperatureLabel.setFont(new Font("arial", Font.BOLD, 18));
 		
 		
-		SymtomChoices = new String[]{"","Dizziness", "Fainting", "Fever", "Blurred Vision"};
+		SymtomChoices = new String[]{""};
 		SymtomsDropdown = new JComboBox<String>(SymtomChoices); 
 		SymtomsDropdown.addActionListener(this);
 		SymtomsDropdown.setFont(new Font("arial", Font.BOLD, 15));
@@ -244,7 +244,7 @@ public class Diagnose extends JFrame implements ActionListener{
 		Background.setBounds(0, 0,1000, 700);
 		add(Background);
 		
-		
+		knownSymtoms();
 		Query q1 = new Query(
 				"consult", new Term[] {new Atom("src/KnowledgeBase.pl")} 
 		);
@@ -259,7 +259,7 @@ public class Diagnose extends JFrame implements ActionListener{
 			string = "is_a_symtom("+ symtom.toLowerCase().replaceAll(" ", "") +")";
 			Query query = new Query(string);
 			
-			string = "sign(X," + symtom.toLowerCase().replaceAll(" ", "") + ")";
+			string = "signs(X," + symtom.toLowerCase().replaceAll(" ", "") + ")";
 			Query q = new Query(string);
 			JOptionPane.showMessageDialog(null, symtom + " is a symtoms associated with " + q.oneSolution().get("X"), FirstName.getText() + " " + LastName.getText() , JOptionPane.INFORMATION_MESSAGE );
 	
@@ -268,6 +268,17 @@ public class Diagnose extends JFrame implements ActionListener{
 		}
 	}
 
+	private void knownSymtoms() {
+		try {
+			Scanner input = new Scanner(new File("src/symtoms.txt"));
+			while(input.hasNext()) {
+				SymtomsDropdown.insertItemAt(input.next(), SymtomsDropdown.getItemCount());
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());
