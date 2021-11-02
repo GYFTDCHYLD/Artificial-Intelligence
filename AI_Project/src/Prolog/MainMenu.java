@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-public class Main extends JFrame implements ActionListener{
+public class MainMenu extends JFrame implements ActionListener{
 	/**
 	 * 
 	 */
@@ -35,7 +35,7 @@ public class Main extends JFrame implements ActionListener{
 	private JLabel Background = new JLabel();
 
 	
-	public Main(String name){
+	public MainMenu(String name){
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);

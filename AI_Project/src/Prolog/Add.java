@@ -6,21 +6,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+
+import org.jpl7.Atom;
+import org.jpl7.Query;
+import org.jpl7.Term;
 
 public class Add extends JFrame implements ActionListener{
 	/**
 	 * 
 	 */
+	private String[] Varient; 
+	private JComboBox<String> VarientDropdown;
+	private JLabel VarientLabel = new JLabel("VARIENT");
 	
-	private JTextField Symtom = new JTextField();// where you type your key
+	private JTextField Symptom = new JTextField();// where you type your key
 	private JLabel SymtomLabel = new JLabel("SYMTOM");  
 	private JButton Add = new JButton("Add Data");
 	private JButton Main = new JButton("Main");
@@ -38,14 +48,27 @@ public class Add extends JFrame implements ActionListener{
 		setSize(400, 200); // width, height
 		setTitle(name.toUpperCase());
 		setLocationRelativeTo(null);
+		
+		Varient = new String[]{""};
+		VarientDropdown = new JComboBox<String>(Varient); 
+		VarientDropdown.addActionListener(this);
+		VarientDropdown.setFont(new Font("arial", Font.BOLD, 15));
+		VarientDropdown.setVisible(true);
+		VarientDropdown.setBounds(5, 10, 200, 25);
+		add(VarientDropdown);
+		VarientDropdown.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		VarientLabel.setBounds(210, 10, 300, 20);
+		add(VarientLabel);
+		VarientLabel.setForeground(Color.WHITE);
+		VarientLabel.setFont(new Font("arial", Font.BOLD, 18));
 
-		Symtom.setSize(150, 25); // width, height
-		Symtom.setLocation(5, 50); // x, y
-		Symtom.setBorder(new LineBorder(java.awt.Color.RED, 1));
-		Symtom.setFont(new Font("arial", Font.BOLD, 15));
-		add(Symtom);
+		Symptom.setSize(250, 25); // width, height
+		Symptom.setLocation(5, 50); // x, y
+		Symptom.setBorder(new LineBorder(java.awt.Color.RED, 1));
+		Symptom.setFont(new Font("arial", Font.BOLD, 15));
+		add(Symptom);
 		SymtomLabel.setHorizontalAlignment(SwingConstants.CENTER); 
-		SymtomLabel.setBounds(60, 50, 300, 20);
+		SymtomLabel.setBounds(160, 50, 300, 20);
 		add(SymtomLabel);
 		SymtomLabel.setForeground(Color.WHITE);
 		SymtomLabel.setFont(new Font("arial", Font.BOLD, 18));
@@ -67,6 +90,12 @@ public class Add extends JFrame implements ActionListener{
 		Background.setIcon(new ImageIcon("Images/blue-covid-banner.jpg"));
 		Background.setBounds(0, 0,600, 600);
 		add(Background);
+		
+		Query q1 = new Query(
+				"consult", new Term[] {new Atom("src/KnowledgeBase.pl")} 
+				);
+		System.out.println( "consult" + (q1.hasSolution() ? " succeeded" : " failed"));	
+		Varient();//update dropdown from knowledgebase
 	}
 
 	
@@ -78,7 +107,7 @@ public class Add extends JFrame implements ActionListener{
 			case "Add Data": 	Write();
 				break;
 			case "Main": 		this.dispose();
-								new Main("Covid-19 Management System");
+								new MainMenu("Covid-19 Management System");
 				break; 
 			default:
 				break;
@@ -88,14 +117,34 @@ public class Add extends JFrame implements ActionListener{
 	private void Write() {
 		try {
 			FileWriter writer = new FileWriter("src/KnowledgeBase.pl",true);
-			writer.write("symtom(" + Symtom.getText().toLowerCase() + ").  signs(covid19," + Symtom.getText().toLowerCase() + ").\n");
+			if(VarientDropdown.getSelectedItem().toString().equals("regular")) {
+				writer.write("symptom(" + Symptom.getText().toLowerCase().replaceAll(" ", "_")  + ").\nassociated(" + Symptom.getText().toLowerCase().replaceAll(" ", "_")  + ",regular"+ ").\n");
+			}else if(VarientDropdown.getSelectedItem().toString().equals("delta")) {
+				writer.write("symptom(" + Symptom.getText().toLowerCase().replaceAll(" ", "_")  + ").\nassociated(" + Symptom.getText().toLowerCase().replaceAll(" ", "_")  + ",delta"+ ").\n");
+			}else if(VarientDropdown.getSelectedItem().toString().equals("mu")) {
+				writer.write("symptom(" + Symptom.getText().toLowerCase().replaceAll(" ", "_")  + ").\nassociated(" + Symptom.getText().toLowerCase().replaceAll(" ", "_")  + ",mu"+ ").\n");
+			}
 			writer.close();
-			writer = new FileWriter("src/symtoms.txt",true);
-			writer.write(Symtom.getText().toLowerCase().replaceAll(" ", "_") + "\n");
-			writer.close();
-			Symtom.setText("");
+			JOptionPane.showMessageDialog(null, Symptom.getText().toUpperCase() + " has been added to the list of symptoms" , "COVID-19", JOptionPane.INFORMATION_MESSAGE, null );
+			Symptom.setText("");
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private void Varient() { 
+		Query result = new Query("varient(V)"); 
+
+		Map<String, Term>[] solution =  result.allSolutions();
+
+		for( Map<String, Term> term: solution) {
+			VarientDropdown.addItem(
+					term.values()
+					.toString()
+					.replace("[", "")
+					.replace("]", "")
+					.replace("_", " ")
+			);
 		}
 	}
 }
