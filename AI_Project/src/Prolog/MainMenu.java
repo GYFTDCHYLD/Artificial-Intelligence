@@ -64,7 +64,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		
 		Background.setHorizontalAlignment(SwingConstants.CENTER); 
 		Background.setIcon(new ImageIcon("Images/blue-covid-banner.jpg"));
-		Background.setBounds(0, 0,600, 600);
+		Background.setBounds(0, 0,400, 400);
 		add(Background);
 	}
 
@@ -80,7 +80,8 @@ public class MainMenu extends JFrame implements ActionListener{
 			case "Diagnose": 	this.dispose();
 								new Diagnose("Covid-19 Management System");
 				break;
-			case "Statistics": 
+			case "Statistics": 	this.dispose();
+								new Statistics("Covid-19 Management System");
 				break; 
 			default:
 				break;
