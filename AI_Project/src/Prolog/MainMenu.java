@@ -1,26 +1,17 @@
 package Prolog;
 
-import org.jpl7.*;
 
+import java.io.*;
+import com.sun.speech.freetts.*;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
 
 public class MainMenu extends JFrame implements ActionListener{
 	/**
@@ -29,14 +20,11 @@ public class MainMenu extends JFrame implements ActionListener{
 	
 	private JButton Add = new JButton("Add Data");
 	private JButton Diagnose = new JButton("Diagnose");
-	private JButton Statistics = new JButton("Statistics");
-	
+	private JButton Statistics = new JButton("Statistics");	
 	
 	private JLabel Background = new JLabel();
-
 	
 	public MainMenu(String name){
-		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		setResizable(false);
@@ -66,13 +54,15 @@ public class MainMenu extends JFrame implements ActionListener{
 		Background.setIcon(new ImageIcon("Images/blue-covid-banner.jpg"));
 		Background.setBounds(0, 0,400, 400);
 		add(Background);
+		
+		AI_Driver.TextToSpeech("kevin16", name);
 	}
 
 	
 
 	
 	public void actionPerformed(ActionEvent e) {
-		
+		AI_Driver.TextToSpeech("kevin16", e.getActionCommand());
 		switch (e.getActionCommand()) {
 			case "Add Data": 	this.dispose();
 								new Add("Covid-19 Management System");

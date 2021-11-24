@@ -13,5 +13,10 @@
 	<classpathentry kind="lib" path="lib/jfreechart-1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/junit.jar"/>
 	<classpathentry kind="lib" path="lib/servlet.jar"/>
+	<classpathentry kind="lib" path="TextToSpeachLib/cmu_time_awb.jar"/>
+	<classpathentry kind="lib" path="TextToSpeachLib/cmu_us_kal.jar"/>
+	<classpathentry kind="lib" path="TextToSpeachLib/cmudict04.jar"/>
+	<classpathentry kind="lib" path="TextToSpeachLib/freetts-jsapi10.jar"/>
+	<classpathentry kind="lib" path="TextToSpeachLib/mbrola.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

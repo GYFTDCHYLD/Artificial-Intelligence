@@ -2,10 +2,10 @@
 high_fever(TempF) :- TempF>102.1.
 convert_temperature(Celcius,Fahrenheit):- Fahrenheit is Celcius*(9/5)+32.
 
-high_pressure(Systolic,Diastolic) :- Systolic>90.0;Diastolic>60.0.
+high_pressure(Systolic,Diastolic) :- Systolic>130.0;Diastolic>80.0.
 low_pressure(Systolic,Diastolic) :- Systolic<90.0;Diastolic<60.0.
 
-possibly_has(Sym,TempF,Syst,Dias,Var) :- symptom(Sym),associated(Sym,Var),high_fever(TempF),high_pressure(Syst,Dias).
+possibly_has(Sym,TempF,Syst,Dias,Var) :- symptom(Sym),associated(Sym,Var),high_fever(TempF),(high_pressure(Syst,Dias);low_pressure(Syst,Dias)) .
 risk_having(Sym,TempF,Syst,Dias) :- symptom(Sym),not(high_fever(TempF));low_pressure(Syst,Dias).
 
 %mu_cases(Patient,Varient):- patient(Patient),
@@ -172,3 +172,24 @@ sytolic("monicka hector",92).
 diastolic("monicka hector",11).
 has_strand("monicka hector",mu).
 status("monicka hector",severe).
+
+symptom(headache).
+associated(headache,regular).
+condition(mild,headache).
+
+
+
+patient("cathrine douglas").
+age("cathrine douglas",29).
+sex("cathrine douglas","Female").
+adderess("cathrine douglas","Clarendon").
+temperature("cathrine douglas",102.2).
+has_symptom("cathrine_douglas",blurred_vision).
+has_symptom("cathrine_douglas",chest_pain).
+has_symptom("cathrine_douglas",headache).
+sytolic("cathrine douglas",90).
+diastolic("cathrine douglas",140).
+has_strand("cathrine douglas",mu).
+status("cathrine douglas",severe).
+
+

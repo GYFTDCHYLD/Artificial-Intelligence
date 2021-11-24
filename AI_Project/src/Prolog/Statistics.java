@@ -119,8 +119,10 @@ public class Statistics extends JFrame implements ActionListener{
 			PieChart();
 			BarChart();
 			CaseCoount.setText("Number Of Cases: " + (Varient("mu") + Varient("delta") + Varient("regular")));// get the amount of patient with covid-19
+			AI_Driver.TextToSpeech("kevin16", "Number Of Cases: " + (Varient("mu") + Varient("delta") + Varient("regular")));
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null," No data available for patient(s)", "Diagnose patient", JOptionPane.INFORMATION_MESSAGE, null );		
+			JOptionPane.showMessageDialog(null," No data available for patient(s)", "Diagnose patient", JOptionPane.INFORMATION_MESSAGE, null );
+			AI_Driver.TextToSpeech("kevin16", "No data available for patient(s)");
 		}
 	}
 

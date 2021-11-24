@@ -133,6 +133,7 @@ public class Add extends JFrame implements ActionListener{
 	private void Write() {
 		if(Symptom.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, Symptom.getText().toUpperCase() + " field cannot be blank/empty" , "COVID-19", JOptionPane.INFORMATION_MESSAGE, null );
+			AI_Driver.TextToSpeech("kevin16", "field cannot be empty");
 			return;
 		}
 		try {
@@ -142,6 +143,8 @@ public class Add extends JFrame implements ActionListener{
 						+ "condition(" + SeverityDropdown.getSelectedItem().toString() + "," + Symptom.getText().toLowerCase().replaceAll(" ", "_") + ").\n"
 						);
 				writer.close();
+			AI_Driver.TextToSpeech("kevin16", Symptom.getText() + " is a " + SeverityDropdown.getSelectedItem().toString() + " symptom that is associated with the " + VarientDropdown.getSelectedItem().toString() + " of covid-19");
+			AI_Driver.TextToSpeech("kevin16",Symptom.getText().toUpperCase() + " has been added to the list of symptoms"); 
 			JOptionPane.showMessageDialog(null, Symptom.getText().toUpperCase() + " has been added to the list of symptoms" , "COVID-19", JOptionPane.INFORMATION_MESSAGE, null );
 			Symptom.setText("");
 		} catch (IOException e) {
