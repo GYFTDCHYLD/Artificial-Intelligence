@@ -382,7 +382,7 @@ public class Diagnose extends JFrame implements ActionListener, KeyListener{
 					  else
 						  writer.write("status(\"" + name  + "\",mild).\n");
 					  writer.close(); 
-				AI_Driver.TextToSpeech("kevin16", name + " possibly has " + varient + " COVID-19");
+				AI_Driver.TextToSpeech("kevin16", name + " possibly has " + varient.replaceAll("\"", "") + " COVID-19"); 
 				JOptionPane.showMessageDialog(null, name + " possibly has " + varient + " COVID-19", "RESULT", JOptionPane.INFORMATION_MESSAGE, null );	
 			} catch (IOException e) {
 				e.printStackTrace();
