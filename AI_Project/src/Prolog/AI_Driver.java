@@ -14,6 +14,7 @@ public class AI_Driver {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new MainMenu("Covid-19 Management System"); 
+				AI_Driver.TextToSpeech("kevin16", "Covid-19 Management System");
 			}
 		});
 	}

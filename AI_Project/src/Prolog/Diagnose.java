@@ -302,15 +302,15 @@ public class Diagnose extends JFrame implements ActionListener, KeyListener{
 
 	private void DiagnosePatient(){// function used when diagnosing patient
 		if(!AllEntryChecked()){// check if all required field are filled
-			JOptionPane.showMessageDialog(null, "All Required Field Must be Filled" , "Required", JOptionPane.ERROR_MESSAGE, null );
 			AI_Driver.TextToSpeech("kevin16", "All Required Field Must be Filled");
+			JOptionPane.showMessageDialog(null, "All Required Field Must be Filled" , "Required", JOptionPane.ERROR_MESSAGE, null );
 			return;
 		}
 		try {
 			Write();
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null,"Check fields for invalid input(s)" , "Required", JOptionPane.ERROR_MESSAGE, null );
 			AI_Driver.TextToSpeech("kevin16", "Check fields for invalid input(s)");
+			JOptionPane.showMessageDialog(null,"Check fields for invalid input(s)" , "Required", JOptionPane.ERROR_MESSAGE, null );
 		}
 	}
 	
@@ -381,15 +381,15 @@ public class Diagnose extends JFrame implements ActionListener, KeyListener{
 						  writer.write("status(\"" + name  + "\",severe).\n");
 					  else
 						  writer.write("status(\"" + name  + "\",mild).\n");
-					  writer.close(); 			 	  
-				JOptionPane.showMessageDialog(null, name + " possibly has " + varient + " COVID-19", "RESULT", JOptionPane.INFORMATION_MESSAGE, null );	
+					  writer.close(); 
 				AI_Driver.TextToSpeech("kevin16", name + " possibly has " + varient + " COVID-19");
+				JOptionPane.showMessageDialog(null, name + " possibly has " + varient + " COVID-19", "RESULT", JOptionPane.INFORMATION_MESSAGE, null );	
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}else {
-			JOptionPane.showMessageDialog(null, name + " is at risk of contracting COVID-19", "Please wash and sanitize hands and wear mask", JOptionPane.INFORMATION_MESSAGE, null );	
 			AI_Driver.TextToSpeech("kevin16", name + " is at risk of contracting COVID-19, Please wash and sanitize hands and wear mask");
+			JOptionPane.showMessageDialog(null, name + " is at risk of contracting COVID-19", "Please wash and sanitize hands and wear mask", JOptionPane.INFORMATION_MESSAGE, null );	
 		}
 		
 		
@@ -548,14 +548,14 @@ public class Diagnose extends JFrame implements ActionListener, KeyListener{
 		boolean lowPressure = lowPressureCheck.hasSolution(); 
 
 		if(highPressure) {
-			JOptionPane.showMessageDialog(null,  " " , "High Blood Pressure Alert!", JOptionPane.INFORMATION_MESSAGE, null );
 			AI_Driver.TextToSpeech("kevin16", FirstName.getText() + " " + LastName.getText() + " blood pressure level seems to be High, " + Temperature_F.getText() + " Fahrenheit");
+			JOptionPane.showMessageDialog(null,  " " , "High Blood Pressure Alert!", JOptionPane.INFORMATION_MESSAGE, null );
 		}else if(lowPressure) {
-			JOptionPane.showMessageDialog(null,  " " , "Low Blood Pressure Alert!", JOptionPane.INFORMATION_MESSAGE, null );
 			AI_Driver.TextToSpeech("kevin16", FirstName.getText() + " " + LastName.getText() + " blood pressure level seems to be low, " + Temperature_F.getText() + " Fahrenheit");
+			JOptionPane.showMessageDialog(null,  " " , "Low Blood Pressure Alert!", JOptionPane.INFORMATION_MESSAGE, null );
 		}else {
-			JOptionPane.showMessageDialog(null,  " " , "Blood Pressure Reading is Normal", JOptionPane.INFORMATION_MESSAGE, null );
 			AI_Driver.TextToSpeech("kevin16", FirstName.getText() + " " + LastName.getText() + " blood pressure level seems to be normal, " + Temperature_F.getText() + " Fahrenheit");
+			JOptionPane.showMessageDialog(null,  " " , "Blood Pressure Reading is Normal", JOptionPane.INFORMATION_MESSAGE, null );
 		}
 	}
 
