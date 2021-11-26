@@ -123,7 +123,7 @@ public class Add extends JFrame implements ActionListener{
 			case "Add Data": 	Write();
 				break;
 			case "Main": 		this.dispose();
-								new MainMenu("Covid-19 Management System");
+								new MainMenu("Covid-19 Expert System");
 				break; 
 			default:
 				break;

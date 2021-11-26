@@ -63,6 +63,7 @@ public class Statistics extends JFrame implements ActionListener{
 		setResizable(false);
 		setSize(800, 600); // width, height
 		setVisible(true);
+		setTitle(name.toUpperCase());
 		setLocationRelativeTo(null);
  
 		final PieSectionLabelGenerator pieChartLabel = new StandardPieSectionLabelGenerator("{0} varient: {2}");
@@ -131,7 +132,7 @@ public class Statistics extends JFrame implements ActionListener{
 
 		switch (e.getActionCommand()) {
 			case "Main": 	this.dispose();
-			new MainMenu("Covid-19 Management System");
+			new MainMenu("Covid-19 Expert System");
 			break; 
 			default:
 				break;

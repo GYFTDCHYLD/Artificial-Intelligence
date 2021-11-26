@@ -502,10 +502,10 @@ public class Diagnose extends JFrame implements ActionListener, KeyListener{
 		
 		switch (e.getActionCommand()) {
 			case "Reset": 	this.dispose();
-							new Diagnose("Covid-19 Management System");
+							new Diagnose("Covid-19 Expert System");
 				break;
 			case "Main": 	this.dispose();
-							new MainMenu("Covid-19 Management System");
+							new MainMenu("Covid-19 Expert System");
 				break;
 			case "Submit":	DiagnosePatient();
 				break; 

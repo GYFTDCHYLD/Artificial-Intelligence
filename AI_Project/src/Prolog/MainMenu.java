@@ -63,13 +63,13 @@ public class MainMenu extends JFrame implements ActionListener{
 		AI_Driver.TextToSpeech("kevin16", e.getActionCommand());
 		switch (e.getActionCommand()) {
 			case "Add Data": 	this.dispose();
-								new Add("Covid-19 Management System");
+								new Add("Covid-19 Expert System");
 				break;
 			case "Diagnose": 	this.dispose();
-								new Diagnose("Covid-19 Management System");
+								new Diagnose("Covid-19 Expert System");
 				break;
 			case "Statistics": 	this.dispose();
-								new Statistics("Covid-19 Management System");
+								new Statistics("Covid-19 Expert System");
 				break; 
 			default:
 				break;
